@@ -1,0 +1,27 @@
+{
+  "name": "snake-royale-api",
+  "version": "1.0.0",
+  "description": "REST Api for Snake Royale game",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GandalfTheBlack16/Snake-Royale-API.git"
+  },
+  "author": "GandalfTheBlack",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/GandalfTheBlack16/Snake-Royale-API/issues"
+  },
+  "homepage": "https://github.com/GandalfTheBlack16/Snake-Royale-API#readme",
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  },
+  "dependencies": {
+    "express": "^4.16.4",
+    "mongodb": "^3.2.2"
+  }
+}

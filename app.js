@@ -1,13 +1,17 @@
 const express = require('express')
+const bodyParser = require('body-parser') 
 const app = express()
 
 const mongoConnect = require('./util/dbconnect').mongoConnect
-const User = require('./models/user')
+const user_routes = require('./routes/user')
 
-app.use((req,res)=>{
-    const user = new User(1,"example@domain.org", "password", "nick", "2019-04-05", "2019-04-05 12:34:35")
-    user.insert()
-})
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({
+    extended: true
+}))
+
+app.use('/user', user_routes)
+
 mongoConnect(()=>{
     app.listen(3000)
 })

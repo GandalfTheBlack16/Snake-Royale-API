@@ -2,8 +2,7 @@ const dbconnect = require('../util/dbconnect')
 
 module.exports = class User{
     //constructor
-    constructor(id,email,password,nickname,registerDate,lastLogin){
-        this.id = id
+    constructor(email,password,nickname,registerDate,lastLogin){
         this.email = email
         this.password = password
         this.nickname = nickname
@@ -14,10 +13,51 @@ module.exports = class User{
     insert() {
         const db = dbconnect.getDB()
         return db 
-            .collection('users')
-            .inserOne(this)
+            .collection('Users')
+            .insertOne(this)
             .then(result => {
                 console.log(result)
+                return this
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    static update(id, params) {
+        const db = dbconnect.getDB()
+        return db 
+            .collection('Users')
+            .updateOne(id, params)
+            .then(result => {
+                console.log(result)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    static find(){
+        const db = dbconnect.getDB()
+        return db
+            .collection('Users')
+            .find()
+            .toArray()
+            .then(result => {
+                return result
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }
+
+    static findOne(filter){
+        const db = dbconnect.getDB()
+        return db
+            .collection('Users')
+            .findOne(filter)
+            .then(result => {
+                return result
             })
             .catch(err => {
                 console.log(err)

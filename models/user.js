@@ -31,6 +31,7 @@ module.exports = class User{
             .updateOne(id, params)
             .then(result => {
                 console.log(result)
+                return id
             })
             .catch(err => {
                 console.log(err)

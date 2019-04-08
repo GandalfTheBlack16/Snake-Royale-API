@@ -3,57 +3,60 @@ const util = require('../util/utils')
 const User = require('../models/user')
 
 module.exports = {
-    addDummyUser: callback => {
-        const dummy = new User("example@domain.org", "password", "nick", "2019-04-05", "2019-04-05 12:34:35")
-        dummy.insert()
-            .then(user => {
-                callback(user)
-            })
-    },
-    addUser: (email,pass,nick, callback) => {
+    addUser: (req,res,next) => {
         const timestamp = new Date().toISOString().split('T')[0]
-        const user = new User(email, pass, nick, timestamp, "")
+        const formData = req.body
+        const user = new User(formData.email, formData.password, formData.nickname, timestamp, "")
         user.insert()
             .then(user => {
-                callback(user)
+                const response = {
+                    message: "User created succesfully",
+                    user: user
+                }
+                res.status(201).json(response)
             })
     },
-    getUsers: callback => {
+    getUsers: (req,res,next) => {
         User.find()
             .then(users => {
-                callback(users)
+                res.status(200).json(users)
             })
             .catch(err => {
                 throw err
             })
     },
-    getUserById: (id,callback) => {
+    getUserById: (req,res,next) => {
         User.findOne({
-            '_id': new ObjectId(id)
+            '_id': new ObjectId(req.params.userId)
         })
             .then(user => {
-                callback(user)
+                res.status(200).json(user)
             })
             .catch(err => {
                 throw err
             })
     },
-    upadateUser: (id, email, password, nickname, lastLogin, callback) => {
+    upadateUser: (req,res,next) => {
+        const formData = req.body
         const params = util.buildObjectNoNull({
-            email: email,
-            password: password,
-            nickname: nickname,
-            lastLogin: lastLogin
+            email: formData.email,
+            password: formData.password,
+            nickname: formData.nickname,
+            lastLogin: formData.lastLogin
         })
         User.update({
-            '_id': new ObjectId(id)
+            '_id': new ObjectId(req.params.userId)
         },
         {
             $set: params
         })
-        .then(
-            callback()
-        )
+        .then(id => {
+            const response = {
+                message: "User updated successfully",
+                userId: id
+            }
+            res.status(200).json(response)
+        })
         .catch(err => {
             throw err
         })

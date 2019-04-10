@@ -13,5 +13,5 @@ app.use(bodyParser.urlencoded({
 app.use('/user', user_routes)
 
 mongoConnect(()=>{
-    app.listen(80)
+    app.listen(3000)
 })

@@ -5,7 +5,7 @@ let _db
 
 const mongoConnect = (callback) => {
     mongoClient.connect(
-    'mongodb+srv://admin:nK1qNONaTYNtTJ2N@cluster0-bgvwt.mongodb.net/test?retryWrites=true',
+    'mongodb://restapi:1234qwer@ds135726.mlab.com:35726/heroku_7z95wdgw',
     { useNewUrlParser: true }
     ).then(client => {
         console.log('DB Connected')

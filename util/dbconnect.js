@@ -4,8 +4,7 @@ const mongoClient = mongodb.MongoClient
 let _db
 
 const mongoConnect = (callback) => {
-    mongoClient.connect(
-    'mongodb://restapi:1234qwer@ds135726.mlab.com:35726/heroku_7z95wdgw',
+    mongoClient.connect(process.env.MONGOLAB_URI,
     { useNewUrlParser: true }
     ).then(client => {
         console.log('DB Connected')

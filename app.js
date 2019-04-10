@@ -13,5 +13,5 @@ app.use(bodyParser.urlencoded({
 app.use('/user', user_routes)
 
 mongoConnect(()=>{
-    app.listen(3000)
+    app.listen(process.env.PORT || 3000)
 })

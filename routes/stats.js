@@ -7,6 +7,10 @@ const router = express.Router()
  */
 router.get('/', controller.fetchStats)
 /**
+ * Get User Stats
+ */
+router.get('/:userId', controller.getStatFromUser)
+/**
  * Initialize stats from user
  */
 router.post('/:userId', controller.addAddStatFromUser)

@@ -10,7 +10,7 @@ module.exports = {
         user.insert()
             .then(user => {
                 const response = {
-                    message: "User created succesfully",
+                    message: "success",
                     user: user
                 }
                 res.status(201).json(response)
@@ -52,7 +52,7 @@ module.exports = {
         })
         .then(id => {
             const response = {
-                message: "User updated successfully",
+                message: "success",
                 userId: id
             }
             res.status(200).json(response)

@@ -15,8 +15,8 @@ router.get('/:userId', controller.getStatFromUser)
  */
 router.post('/:userId', controller.addAddStatFromUser)
 /**
- * Update stats of user
+ * Update stat
  */
-router.put('/:userId', controller.updateStats)
+router.put('/:statId', controller.updateStats)
 
 module.exports = router

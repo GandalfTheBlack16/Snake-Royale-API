@@ -1,10 +1,10 @@
 const dbconnect = require('../util/dbconnect')
 
 module.exports = class Stat{
-    constructor(user_id, games, rank){
+    constructor(user_id, games, maxScore){
         this.user_id = user_id
         this.games = games
-        this.rank = rank
+        this.maxScore = maxScore
     }
 
     insert() {
@@ -21,14 +21,13 @@ module.exports = class Stat{
             })
     }
 
-     update(params) {
+    static update(id, params) {
         const db = dbconnect.getDB()
         return db 
             .collection('Stats')
-            .updateOne(this.id, params)
+            .updateOne(id, params)
             .then(result => {
-                console.log(result)
-                return this
+                return result
             })
             .catch(err => {
                 console.log(err)

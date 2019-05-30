@@ -21,31 +21,27 @@ module.exports = {
     getStatFromUser: (req,res,next)=>{
         const stat = new Stat(req.params.userId, 0, 0)
         stat.findOne({
-            'userId': stat.user_id
+            'user_id': stat.user_id
         }).then(stat => {
-            const ret = {
-                message: "success",
-                stat: stat
-            }
-            res.status(200).json(ret)
+            res.status(200).json(stat)
         })
     },
     updateStats: (req,res,next)=> {
         const formData = req.body
         const params = util.buildObjectNoNull({
             games: formData.games,
-            rank: formData.rank,
+            maxScore: formData.maxScore
         })
-        Stat.updateStats({
-            "_id": new ObjectId(req.params.userId)
+        Stat.update({
+            "_id": new ObjectId(req.params.statId)
         },
         {
             $set: params
         })
-        .then(user => {
+        .then(stat => {
             res.status(200).json({
                 message: "success",
-                userId: user.user_id
+                statId: req.params.statId
             })
         })
         .catch()

@@ -1,11 +1,9 @@
 const dbconnect = require('../util/dbconnect')
 
 module.exports = class Stat{
-    constructor(user_id, games, wins, top10, rank){
+    constructor(user_id, games, rank){
         this.user_id = user_id
         this.games = games
-        this.wins = wins
-        this.top10 = top10
         this.rank = rank
     }
 

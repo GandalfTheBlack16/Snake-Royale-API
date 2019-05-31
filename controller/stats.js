@@ -1,4 +1,5 @@
 const Stat = require('../models/stats')
+const User = require('../models/user')
 const ObjectId = require('mongodb').ObjectID
 const util = require('../util/utils')
 
@@ -49,5 +50,25 @@ module.exports = {
             })
         })
         .catch()
-    } 
+    },
+    drawScoreboardWebView: (req,res,next)=>{
+        let users = []
+        Stat.find().then(result => {
+            if (result){
+                result.forEach((item, index)=>{
+                    users.push({    
+                        id: item.user_id,
+                        rank: index+1,
+                        maxScore: item.maxScore,
+                        games: item.games,
+                    })
+                })
+            }
+            return users
+        }).then(users => {
+            res.render("scoreboard", {
+                users:users
+             })
+        })
+    }
 }

@@ -13,9 +13,11 @@ module.exports = {
             res.status(200).json(ret)
         })
     },
-    fetchStats: (req, res, next)=>{
+    fetchStatsOrderedByScore: (req, res, next)=>{
         Stat.find().then(result => {
-            res.status(200).json(result)
+            if (result)
+                return res.status(200).json(result)
+                res.status(200).json([])
         })
     },
     getStatFromUser: (req,res,next)=>{
@@ -23,7 +25,9 @@ module.exports = {
         stat.findOne({
             'user_id': stat.user_id
         }).then(stat => {
-            res.status(200).json(stat)
+            if (stat)
+                return res.status(200).json(stat)
+            res.status(200).json([]);
         })
     },
     updateStats: (req,res,next)=> {

@@ -5,7 +5,7 @@ const router = express.Router()
 /**
  * Get World Stats
  */
-router.get('/', controller.fetchStats)
+router.get('/', controller.fetchStatsOrderedByScore)
 /**
  * Get User Stats
  */

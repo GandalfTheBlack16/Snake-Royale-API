@@ -52,6 +52,9 @@ module.exports = class Stat{
         return db
             .collection('Stats')
             .find()
+            .sort({
+                maxScore: -1
+            })
             .toArray()
             .then(result => {
                 return result

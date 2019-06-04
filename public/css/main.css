@@ -24,7 +24,7 @@ body, html {
 .container-table100 {
   width: 100%;
   min-height: 100vh;
-  background: #88aa8f;
+  background: #45896A;
 
   display: -webkit-box;
   display: -webkit-flex;
@@ -71,7 +71,7 @@ body, html {
 
 .row.header {
   color: #ffffff;
-  background: #4e6f42;
+  background: #76ab62;
 }
 
 @media screen and (max-width: 400px) {

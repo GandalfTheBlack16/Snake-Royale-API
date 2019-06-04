@@ -51,24 +51,27 @@ module.exports = {
         })
         .catch()
     },
-    drawScoreboardWebView: (req,res,next)=>{
-        let users = []
-        Stat.find().then(result => {
-            if (result){
-                result.forEach((item, index)=>{
-                    users.push({    
-                        id: item.user_id,
-                        rank: index+1,
-                        maxScore: item.maxScore,
-                        games: item.games,
-                    })
+    drawScoreboardWebView: async (req,res,next)=>{
+        let ret = []
+        try {
+            const stats = await Stat.find()
+            const users = await User.find()
+            stats.forEach((item, i) => {
+                ret.push({
+                    "rank": i+1,
+                    "nickname": users.find(user => {return (user._id.toString() === item.user_id)}).nickname,
+                    "maxScore": item.maxScore,
+                    "games": item.games
                 })
-            }
-            return users
-        }).then(users => {
-            res.render("scoreboard", {
-                users:users
-             })
-        })
+                res.render('scoreboard', {
+                    users: ret
+                })
+            })
+
+        } catch(err) {
+            if (!err.statusCode)
+                err.statusCode = 500
+            console.log(err)
+        }
     }
 }

@@ -1,15 +1,8 @@
-
-
-/*//////////////////////////////////////////////////////////////////
-[ FONT ]*/
-
 @font-face {
   font-family: Neon;
   src: url('../fonts/Neon/Neon.ttf'); 
 }
 
-/*//////////////////////////////////////////////////////////////////
-[ RESTYLE TAG ]*/
 * {
 	margin: 0px; 
 	padding: 0px; 
@@ -21,68 +14,7 @@ body, html {
 	font-family: Neon;
 }
 
-/* ------------------------------------ */
-a {
-	margin: 0px;
-	transition: all 0.4s;
-	-webkit-transition: all 0.4s;
-  -o-transition: all 0.4s;
-  -moz-transition: all 0.4s;
-}
-
-a:focus {
-	outline: none !important;
-}
-
-/* a:hover {
-	text-decoration: none;
-} */
-
-/* ------------------------------------ */
-h1,h2,h3,h4,h5,h6 {margin: 0px;}
-
-p {margin: 0px;}
-
-ul, li {
-	margin: 0px;
-	list-style-type: none;
-}
-
-
-/* ------------------------------------ */
-input {
-  display: block;
-	outline: none;
-	border: none !important;
-}
-
-textarea {
-  display: block;
-  outline: none;
-}
-
-textarea:focus, input:focus {
-  border-color: transparent !important;
-}
-
-/* ------------------------------------ */
-button {
-	outline: none !important;
-	border: none;
-	background: transparent;
-}
-
-/* button:hover {
-	cursor: pointer;
-} */
-
-iframe {
-	border: none !important;
-}
-
-
-/*//////////////////////////////////////////////////////////////////
-[ Table ]*/
+/*[ Table ]*/
 
 .limiter {
   width: 100%;
@@ -115,7 +47,7 @@ iframe {
 .title {
   text-align: center;
   margin-bottom: 25px;
-  font-size: 40px;
+  font-size: xx-large;
   color: #fff;
 }
 
@@ -125,7 +57,7 @@ iframe {
   margin: 0;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 400px) {
   .table {
     display: block;
   }
@@ -142,7 +74,7 @@ iframe {
   background: #4e6f42;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 400px) {
   .row {
     display: block;
   }
@@ -178,7 +110,7 @@ iframe {
   padding-left: 10px;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 400px) {
   .cell {
     display: block;
   }
@@ -234,7 +166,7 @@ iframe {
   cursor: pointer;
 } */
 
-@media (max-width: 768px) {
+@media (max-width: 400px) {
   .row {
     border-bottom: 1px solid #f2f2f2;
     padding-bottom: 18px;

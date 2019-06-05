@@ -63,11 +63,10 @@ module.exports = {
                     "maxScore": item.maxScore,
                     "games": item.games
                 })
-                res.render('scoreboard', {
-                    users: ret
-                })
             })
-
+            res.render('scoreboard', {
+                users: ret
+            })
         } catch(err) {
             if (!err.statusCode)
                 err.statusCode = 500
